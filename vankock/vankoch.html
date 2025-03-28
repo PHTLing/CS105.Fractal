@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Von Koch Snowflake</title>
+    <h1>Von Koch Snowflake</h1>
+    <link rel="stylesheet" href="vankoch.css">
+</head>
+<body>
+    <button onclick="window.location.href='../home.html'">Home</button>
+    <canvas id="glCanvas" width="500" height="500"></canvas>
+    <div class="controls">
+        <button id="decreaseLevel"onclick="changeLevel(-1)">-</button>
+        <span id="levelDisplay">0</span>
+        <button id="increaseLevel" onclick="changeLevel(1)">+</button>
+    </div>
+    <script src="vankoch.js"></script>
+    <!-- Thư viện WebGL -->
+    <script src="../webgl/webgl-utils.js"></script>
+    <script src="../webgl/webgl-lessons-ui.js"></script>
+</body>
+</html>
