@@ -8,10 +8,11 @@
     <link rel="stylesheet" href="vankoch.css">
 </head>
 <body>
-    <button onclick="window.location.href='../home.html'">Home</button>
+    <button id="Home" onclick="window.location.href='../home.html'">Home</button>
+
     <canvas id="glCanvas" width="500" height="500"></canvas>
     <div class="controls">
-        <button id="decreaseLevel"onclick="changeLevel(-1)">-</button>
+        <button id="decreaseLevel" onclick="changeLevel(-1)">-</button>
         <span id="levelDisplay">0</span>
         <button id="increaseLevel" onclick="changeLevel(1)">+</button>
     </div>

@@ -24,7 +24,7 @@ function initShaders() {
     `;
     const fsSource = `
         void main() {
-            gl_FragColor = vec4(0, 0, 1.0, 1.0);
+            gl_FragColor = vec4(0.635, 0.863, 0.933, 1.0);
         }
     `;
     

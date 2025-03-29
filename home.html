@@ -3,32 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <h1> Welcome to Mini Fractal Project</h1>
+    <h2> Explore the mathematical beauty of various fractals</h2>
     <title>Home</title>
-    <style>
-        body {
-            text-align: center;
-            font-family: Arial, sans-serif;
-            margin-top: 50px;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 18px;
-            margin: 10px;
-            cursor: pointer;
-        }
-    </style>
+    <link rel="stylesheet" href="home.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
-    <h1>Welcome to Mini Project</h1>
-    <button onclick="window.location.href='minkowski/minkowski.html'">Go to Minkowski</button>
-    <button onclick="window.location.href='vankock/vankoch.html'">Go to VanKoch</button>
-    <button onclick="window.location.href='sierpinskiT/sierpinskiT.html'">Go to Sierpinski (Triangles)</button>
-    <button onclick="window.location.href='sierpinskiC/sierpinskiC.html'">Go to Sierpinski (Carpet)</button>
-    <button onclick="window.location.href='mandelbrot/mandelbrot.html'">Go to Mandelbrot Set</button>
-    <button onclick="window.location.href='julia/julia.html'">Go to Julia Set</button>
-
-
-
-
+    <div class="button-container">
+        <button id="minkowski" onclick="window.location.href='minkowski/minkowski.html'">Go to Minkowski</button>
+        <button id="vankoch" onclick="window.location.href='vankock/vankoch.html'">Go to VanKoch</button>
+        <button id="sierpinskiT" onclick="window.location.href='sierpinskiT/sierpinskiT.html'">Go to Sierpinski (Triangles)</button>
+        <button id="sierpinskiC" onclick="window.location.href='sierpinskiC/sierpinskiC.html'">Go to Sierpinski (Carpet)</button>
+        <button id="mandelbrot" onclick="window.location.href='mandelbrot/mandelbrot.html'">Go to Mandelbrot Set</button>
+        <button id="julia" onclick="window.location.href='julia/julia.html'">Go to Julia Set</button>
+    </div>
 </body>
 </html>
