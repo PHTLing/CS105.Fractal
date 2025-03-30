@@ -67,25 +67,27 @@ button:hover {
 }
 /* Home */
 #Home {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 12px 20px;
-    font-size: 20px;
-    font-weight: 600;
-    font-family: 'Poppins', sans-serif;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-transform: capitalize;
-    background: #ECE9FC;
-    color: #333;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    font-weight: bold;
 }
 
-#Home-button:hover {
-    transform: scale(1.05);
-    background: #E0DAFC;
+#Home::before {
+    content: '\2190'; /* Mũi tên quay về */
+    margin-right: 8px;
+    font-size: 18px;
 }
+
 
 
 canvas {
