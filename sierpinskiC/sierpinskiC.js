@@ -77,7 +77,7 @@ function drawSierpinskiCarpet(level) {
 function changeLevel(delta) {
     level = Math.max(0, level + delta);
     if (level > 6) {
-        alert("⚠ Giới hạn level là 6!");
+        alert("⚠ Bạn đã vẽ đến giới hạn nhóm hiển thị. Hãy giảm level để tiếp tục!");
         level = 6;
         document.getElementById("increaseLevel").disabled = true;
     } else {

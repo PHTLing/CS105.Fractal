@@ -1,4 +1,5 @@
 let gl, program;
+let zoom = 1.0, offsetX = -0.5, offsetY = 0.0;
 
 function initWebGL() {
     const canvas = document.getElementById("glCanvas");
@@ -33,9 +34,11 @@ function initShaders() {
     const fsSource = `
         precision highp float;
         uniform vec2 u_resolution;
+        uniform float u_zoom;
+        uniform vec2 u_offset;
 
         void main() {
-            vec2 c = (gl_FragCoord.xy / u_resolution - 0.5) * 3.0 - vec2(0.5, 0.0);
+            vec2 c = (gl_FragCoord.xy / u_resolution - 0.5) * (3.0 / u_zoom) + u_offset;
             vec2 z = c;
             int iter = 0;  // Khai báo biến trước vòng lặp
 
@@ -91,7 +94,24 @@ function drawMandelbrot() {
     const resolution = gl.getUniformLocation(program, "u_resolution");
     gl.uniform2f(resolution, gl.canvas.width, gl.canvas.height);
 
+    const zoomLoc = gl.getUniformLocation(program, "u_zoom");
+    gl.uniform1f(zoomLoc, zoom);
+
+    const offsetLoc = gl.getUniformLocation(program, "u_offset");
+    gl.uniform2f(offsetLoc, offsetX, offsetY);
+
     gl.drawArrays(gl.TRIANGLES, 0, vertices.length / 2);
 }
 
-window.onload = initWebGL;
+window.onload = () => {
+    initWebGL();
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "ArrowUp") offsetY += 0.1 / zoom;
+        if (event.key === "ArrowDown") offsetY -= 0.1 / zoom;
+        if (event.key === "ArrowLeft") offsetX -= 0.1 / zoom;
+        if (event.key === "ArrowRight") offsetX += 0.1 / zoom;
+        if (event.key === "+") zoom *= 1.2;
+        if (event.key === "-") zoom /= 1.2;
+        drawMandelbrot();
+    });
+};

@@ -26,7 +26,7 @@ function initShaders() {
     `;
     const fsSource = `
         void main() {
-            gl_FragColor = vec4(0, 0, 1.0, 1.0);
+            gl_FragColor = vec4(0.027, 0.616, 0.851, 1.0);
         }
     `;
     
@@ -46,84 +46,38 @@ function initShaders() {
 }
 function generateMinkowskiCurve(level) {
     vertices = [];
-    p1 = [-0.5, 0.5];
-    p2 = [0.5, 0.5];
-    p3 = [0.5, -0.5];
-    p4 = [-0.5, -0.5];
-    generateMinkowskiSegment(p1, p2, level);
-    generateMinkowskiSegment(p2, p3, level);
-    generateMinkowskiSegment(p3, p4, level);
-    generateMinkowskiSegment(p4, p1, level);
-    // vertices.push(0.8, 0.0);  // Đảm bảo thêm điểm cuối
+    let points = [
+        [-0.5, 0.5], [0.5, 0.5],
+        [0.5, -0.5], [-0.5, -0.5]
+    ];
+    for (let i = 0; i < points.length; i++) {
+        generateMinkowskiSegment(points[i], points[(i + 1) % points.length], level);
+    }
 }
+
 function generateMinkowskiSegment(p1, p2, depth) {
     if (depth === 0) {
         vertices.push(...p1, ...p2);
         return;
     }
-    let denlta = ((Math.abs(p2[0] - p1[0]))!==0) ? Math.abs(p2[0] - p1[0]): Math.abs(p2[1] - p1[1]);
-    denlta = denlta / 4;
-    console.log("delta", denlta);
-    let A, B, C, D, E, F, G, H, I;
-    // Ngang trái -> phải: x1<x2, y1=y2
-    if (p1[0] < p2[0] && p1[1] === p2[1]) {
-        console.log("Ngang trái -> phải: x1<x2, y1=y2");
-        A = p1;
-        B = p2;
-        C = [A[0] + denlta, A[1]];
-        D = [C[0] + denlta, C[1]];
-        E = [D[0] + denlta, D[1]];
-        F = [C[0], C[1] + denlta];
-        G = [D[0], D[1] + denlta];
-        H = [D[0], D[1] - denlta];
-        I = [E[0], E[1] - denlta];  
-    } // Ngang phải -> trái: x1>x2, y1=y2
-    else if (p1[0] > p2[0] && p1[1] === p2[1]) {
-        console.log("Ngang phải -> trái: x1>x2, y1=y2");
-        A = p1;
-        B = p2;
-        C = [A[0] - denlta, A[1]];
-        D = [C[0] - denlta, C[1]];
-        E = [D[0] - denlta, D[1]];
-        F = [C[0], C[1] - denlta];
-        G = [D[0], D[1] - denlta];
-        H = [D[0], D[1] + denlta];
-        I = [E[0], E[1] + denlta];  
+    let delta = Math.abs(p2[0] - p1[0]) || Math.abs(p2[1] - p1[1]);
+    delta /= 4;
+
+    let dx = p2[0] - p1[0], dy = p2[1] - p1[1];
+    let dirX = Math.sign(dx), dirY = Math.sign(dy);
+
+    let C = [p1[0] + dirX * delta, p1[1] + dirY * delta];
+    let D = [C[0] + dirX * delta, C[1] + dirY * delta];
+    let E = [D[0] + dirX * delta, D[1] + dirY * delta];
+    let F = [C[0] - dirY * delta, C[1] + dirX * delta];
+    let G = [D[0] - dirY * delta, D[1] + dirX * delta];
+    let H = [D[0] + dirY * delta, D[1] - dirX * delta];
+    let I = [E[0] + dirY * delta, E[1] - dirX * delta];
+
+    let segments = [p1, C, F, G, D, H, I, E, p2];
+    for (let i = 0; i < segments.length - 1; i++) {
+        generateMinkowskiSegment(segments[i], segments[i + 1], depth - 1);
     }
-    // Dọc trên -> dưới: x1=x2, y1>y2
-    else if (p1[0] === p2[0] && p1[1] > p2[1]) {
-        console.log("Dọc trên -> dưới: x1=x2, y1>y2");
-        A = p1;
-        B = p2;
-        C = [A[0], A[1] - denlta];
-        D = [C[0], C[1] - denlta];
-        E = [D[0], D[1] - denlta];
-        F = [C[0] + denlta, C[1]];
-        G = [D[0] + denlta, D[1]];
-        H = [D[0] - denlta, D[1]];
-        I = [E[0] - denlta, E[1]];  
-    }    
-    // Dọc dưới -> trên: x1=x2, y1<y2
-    else if (p1[0] === p2[0] && p1[1] < p2[1]) {
-        console.log("Dọc dưới -> trên: x1=x2, y1<y2");
-        A = p1;
-        B = p2;
-        C = [A[0], A[1] + denlta];
-        D = [C[0], C[1] + denlta];
-        E = [D[0], D[1] + denlta];
-        F = [C[0] - denlta, C[1]];
-        G = [D[0] - denlta, D[1]];
-        H = [D[0] + denlta, D[1]];
-        I = [E[0] + denlta, E[1]];
-    }
-    generateMinkowskiSegment(A, C, depth - 1);
-    generateMinkowskiSegment(C, F, depth - 1);
-    generateMinkowskiSegment(F, G, depth - 1);
-    generateMinkowskiSegment(G, D, depth - 1);
-    generateMinkowskiSegment(D, H, depth - 1);
-    generateMinkowskiSegment(H, I, depth - 1);
-    generateMinkowskiSegment(I, E, depth - 1);
-    generateMinkowskiSegment(E, B, depth - 1);
 }
 
 function drawMinkowski(level) {
