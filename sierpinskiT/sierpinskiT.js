@@ -80,7 +80,7 @@ function drawSierpinski(level) {
 function changeLevel(delta) {
     level = Math.max(0, level + delta);
     if (level > 7) {
-        alert("⚠ Đã đạt giới hạn level 7!");
+        alert("⚠ Bạn đã vẽ đến giới hạn nhóm hiển thị. Hãy giảm level để tiếp tục!");
         level = 7;
         document.getElementById("increaseLevel").disabled = true;
     } else {

@@ -82,7 +82,7 @@ button:hover {
 }
 
 #sierpinskiC {
-    background: linear-gradient(135deg, #fde68a, #fcd34d);
+    background: linear-gradient(135deg, #fff1b7, #ffde70);
 }
 
 #mandelbrot {
@@ -90,5 +90,5 @@ button:hover {
 }
 
 #julia {
-    background: linear-gradient(135deg, #f9a8d4, #ff5bb0);
+    background: linear-gradient(135deg, #ffcae7, #ff70ba);
 }
