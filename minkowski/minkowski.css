@@ -20,13 +20,13 @@ body {
 }
 
 h1 {
-    font-size: 60px;
+    font-size: 50px;
     font-weight: 600;
     background: linear-gradient(to right, #6a11cb, #2575fc);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 h2 {

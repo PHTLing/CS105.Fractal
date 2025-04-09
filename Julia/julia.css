@@ -22,7 +22,7 @@ body {
 }
 
 h1 {
-    font-size: 60px;
+    font-size: 50px;
     font-weight: 600;
     background: linear-gradient(to right, #6a11cb, #2575fc);
     background-clip: text;
@@ -41,11 +41,10 @@ h2 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 10px;
 }
 
 button {
-    
     padding: 12px 20px;
     font-size: 20px;
     font-weight: 600;
@@ -118,8 +117,8 @@ button:disabled {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
-    margin-top: 20px;
+    gap: 0px;
+    margin-top: 5px;
 }
 
 .parameter-container p {
@@ -129,7 +128,7 @@ button:disabled {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 5px;
 }
 
 .parameter-container input {
@@ -153,5 +152,5 @@ button:disabled {
 
 /* Căn chỉnh các input ngang hàng */
 .parameter-container p input {
-    margin: 0 5px;
+    margin: 0 10px;
 }
