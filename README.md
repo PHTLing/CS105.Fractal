@@ -7,6 +7,12 @@ Dự án này là một phần của khóa học CS105, tập trung vào việc 
 - Huỳnh Trung Nghĩa - 22520945
 - Nguyễn Hồng Phát - 22521702
 
+## Nội dung 
+Biểu diễn một số mô hình fractal phổ biến:
+1.	Bông tuyết Vankoch (Koch Snowflake)
+2. Đảo Minkowski (Minkowski Island)
+3.	Tam giác Sierpinski (Sierpinski Triangles) và Hình vuông Sierpinski (Sierpinski Carpet)
+4.	Mandelbrot Set và Julia Set
 
 ## 🚀 Cách chạy dự án
 
@@ -28,6 +34,5 @@ Dự án này là một phần của khóa học CS105, tập trung vào việc 
 
 ## 📷 Hình ảnh minh họa
 
-*Thêm ảnh chụp màn hình của các fractal tại đây để minh họa cho người dùng.*
 ![alt text](img/img_1.png)
 
