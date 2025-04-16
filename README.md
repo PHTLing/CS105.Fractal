@@ -2,12 +2,12 @@
 
 Dự án này là một phần của khóa học CS105, tập trung vào việc trực quan hóa và khám phá các fractal nổi tiếng bằng cách sử dụng HTML, CSS và JavaScript. Dự án cung cấp một giao diện tương tác để người dùng có thể khám phá các mô hình fractal khác nhau.
 
-## Thành viên nhóm
+## 🧑‍🎓 Thành viên nhóm
 - Phạm Hồ Trúc Linh - 22520777
 - Huỳnh Trung Nghĩa - 22520945
 - Nguyễn Hồng Phát - 22521702
 
-## Nội dung 
+## 📄 Nội dung 
 Biểu diễn một số mô hình fractal phổ biến:
 1.	Bông tuyết Vankoch (Koch Snowflake)
 2. Đảo Minkowski (Minkowski Island)
